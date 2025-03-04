@@ -10874,7 +10874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &931020578
 Transform:
   m_ObjectHideFlags: 0
@@ -10903,7 +10903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handGrabState: {fileID: 712018500}
-  _syntheticHand: {fileID: 0}
+  _syntheticHand: {fileID: 5386788}
 --- !u!1 &935341687
 GameObject:
   m_ObjectHideFlags: 0
@@ -12821,7 +12821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1115455654
 Transform:
   m_ObjectHideFlags: 0
@@ -12850,7 +12850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handGrabState: {fileID: 724807734}
-  _syntheticHand: {fileID: 0}
+  _syntheticHand: {fileID: 1511594199}
 --- !u!1 &1117563122
 GameObject:
   m_ObjectHideFlags: 0
@@ -20673,7 +20673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1815166747
 Transform:
   m_ObjectHideFlags: 0
@@ -20702,10 +20702,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handGrabInteractor: {fileID: 724807734}
-  _handVisual: {fileID: 0}
-  _handRenderer: {fileID: 0}
-  _materialEditor: {fileID: 0}
-  _glowColorGrabing: {r: 1, g: 1, b: 1, a: 0}
+  _handVisual: {fileID: 475194806}
+  _handRenderer: {fileID: 800444293}
+  _materialEditor: {fileID: 800444292}
+  _glowColorGrabing: {r: 0.39920965, g: 0.62912905, b: 0.93207544, a: 0}
   _glowColorHover: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0}
   _colorChangeSpeed: 0.5
   _glowFadeStartTime: 0.2
@@ -23567,7 +23567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2117597281
 Transform:
   m_ObjectHideFlags: 0
@@ -23596,10 +23596,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handGrabInteractor: {fileID: 712018500}
-  _handVisual: {fileID: 0}
-  _handRenderer: {fileID: 0}
-  _materialEditor: {fileID: 0}
-  _glowColorGrabing: {r: 1, g: 1, b: 1, a: 0}
+  _handVisual: {fileID: 554981631}
+  _handRenderer: {fileID: 2134815516}
+  _materialEditor: {fileID: 2134815515}
+  _glowColorGrabing: {r: 0.4, g: 0.627451, b: 0.93333334, a: 0}
   _glowColorHover: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0}
   _colorChangeSpeed: 0.5
   _glowFadeStartTime: 0.2
