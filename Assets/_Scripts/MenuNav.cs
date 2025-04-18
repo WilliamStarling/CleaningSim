@@ -12,8 +12,10 @@ public class MenuNav : MonoBehaviour
 
     [Header("Components")]
     public int questionNumber = 1;
+    public int hintsUsed = 0;
     public string answerTag;
     public GameObject ScoreText;
+    public GameObject HintsTracker;
     public int Score = 100;
 
     [Header("Question 1")]
@@ -43,6 +45,14 @@ public class MenuNav : MonoBehaviour
     public GameObject ButtonTrue5;
     public GameObject ButtonFalse5;
 
+    [Header("Hints")]
+    public GameObject HintButton;
+    public GameObject Hint1;
+    public GameObject Hint2;
+    public GameObject Hint3;
+    public GameObject Hint4;
+    public GameObject Hint5;
+
     [Header("Answers")]
     public GameObject Answer1;
     public GameObject Answer2;
@@ -55,6 +65,12 @@ public class MenuNav : MonoBehaviour
     private string Q3Answer;
     private string Q4Answer;
     private string Q5Answer;
+
+    private bool Hint1used = false;
+    private bool Hint2used = false;
+    private bool Hint3used = false;
+    private bool Hint4used = false;
+    private bool Hint5used = false;
 
     public void OpensScreen(GameObject next)
     {
@@ -74,38 +90,86 @@ public class MenuNav : MonoBehaviour
         {
             answerTag = self.tag;
             Q1Answer = answerTag;
+            Hint1.SetActive(false);
         }
 
         else if (questionNumber == 2)
         {
             answerTag = self.tag;
             Q2Answer = answerTag;
+            Hint2.SetActive(false);
         }
 
         else if (questionNumber == 3)
         {
             answerTag = self.tag;
             Q3Answer = answerTag;
+            Hint3.SetActive(false);
         }
 
         else if (questionNumber == 4)
         {
             answerTag = self.tag;
             Q4Answer = answerTag;
+            Hint4.SetActive(false);
         }
 
         else if (questionNumber == 5)
         {
             answerTag = self.tag;
             Q5Answer = answerTag;
+            Hint5.SetActive(false);
             CalculateResults();
             questionNumber = 0;
             answerTag = null;
         }
+    }
 
-        else if (questionNumber == 6)
+    public void UseHint()
+    {
+        if (questionNumber == 1 && Hint1used == false)
         {
-            
+            Hint1.SetActive(true);
+            Score = Score - 3;
+            Hint1used = true;
+            hintsUsed++;
+            HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        }
+
+        else if (questionNumber == 2 && Hint2used == false)
+        {
+            Hint2.SetActive(true);
+            Score = Score - 3;
+            Hint2used = true;
+            hintsUsed++;
+            HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        }
+
+        else if (questionNumber == 3 && Hint3used == false)
+        {
+            Hint3.SetActive(true);
+            Score = Score - 3;
+            Hint3used = true;
+            hintsUsed++;
+            HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        }
+
+        else if (questionNumber == 4 && Hint4used == false)
+        {
+            Hint4.SetActive(true);
+            Score = Score - 3;
+            Hint4used = true;
+            hintsUsed++;
+            HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        }
+
+        else if (questionNumber == 5 && Hint5used == false)
+        {
+            Hint5.SetActive(true);
+            Score = Score - 3;
+            Hint5used = true;
+            hintsUsed++;
+            HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
         }
     }
 

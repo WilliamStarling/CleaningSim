@@ -12,6 +12,7 @@ TagManager:
   - C
   - D
   - E
+  - Hint
   layers:
   - Default
   - TransparentFX
