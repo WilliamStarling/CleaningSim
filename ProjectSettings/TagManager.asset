@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Component
+  - True
+  - False
+  - A
+  - B
+  - C
+  - D
+  - E
+  - Hint
   layers:
   - Default
   - TransparentFX

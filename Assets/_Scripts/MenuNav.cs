@@ -1,28 +1,221 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class MenuNav : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Components")]
+    public int questionNumber = 1;
+    public int hintsUsed = 0;
+    public string answerTag;
+    public GameObject ScoreText;
+    public GameObject HintsTracker;
+    public int Score = 100;
+
+    [Header("Question 1")]
+    public GameObject ButtonTrue1;
+    public GameObject ButtonFalse1;
+
+    [Header("Question 2")]
+    public GameObject ButtonA2;
+    public GameObject ButtonB2;
+    public GameObject ButtonC2;
+    public GameObject ButtonD2;
+
+    [Header("Question 3")]
+    public GameObject ButtonA3;
+    public GameObject ButtonB3;
+    public GameObject ButtonC3;
+    public GameObject ButtonD3;
+    public GameObject ButtonE;
+
+    [Header("Question 4")]
+    public GameObject ButtonA4;
+    public GameObject ButtonB4;
+    public GameObject ButtonC4;
+    public GameObject ButtonD4;
+
+    [Header("Question 5")]
+    public GameObject ButtonTrue5;
+    public GameObject ButtonFalse5;
+
+    [Header("Hints")]
+    public GameObject HintButton;
+    public GameObject Hint1;
+    public GameObject Hint2;
+    public GameObject Hint3;
+    public GameObject Hint4;
+    public GameObject Hint5;
+
+    [Header("Answers")]
+    public GameObject Answer1;
+    public GameObject Answer2;
+    public GameObject Answer3;
+    public GameObject Answer4;
+    public GameObject Answer5;
+
+    private string Q1Answer;
+    private string Q2Answer;
+    private string Q3Answer;
+    private string Q4Answer;
+    private string Q5Answer;
+
+    private bool Hint1used = false;
+    private bool Hint2used = false;
+    private bool Hint3used = false;
+    private bool Hint4used = false;
+    private bool Hint5used = false;
 
     public void OpensScreen(GameObject next)
     {
+        
         next.SetActive(true);
+        questionNumber++;
     }
 
     public void CloseScreen(GameObject self)
     {
         self.SetActive(false);
+    }
+
+    public void Answer(GameObject self)
+    {
+        if (questionNumber == 1)
+        {
+            answerTag = self.tag;
+            Q1Answer = answerTag;
+            Hint1.SetActive(false);
+        }
+
+        else if (questionNumber == 2)
+        {
+            answerTag = self.tag;
+            Q2Answer = answerTag;
+            Hint2.SetActive(false);
+        }
+
+        else if (questionNumber == 3)
+        {
+            answerTag = self.tag;
+            Q3Answer = answerTag;
+            Hint3.SetActive(false);
+        }
+
+        else if (questionNumber == 4)
+        {
+            answerTag = self.tag;
+            Q4Answer = answerTag;
+            Hint4.SetActive(false);
+        }
+
+        else if (questionNumber == 5)
+        {
+            answerTag = self.tag;
+            Q5Answer = answerTag;
+            Hint5.SetActive(false);
+            CalculateResults();
+            questionNumber = 0;
+            answerTag = null;
+        }
+    }
+
+    public void UseHint()
+    {
+        if (questionNumber == 1 && Hint1used == false)
+        {
+            Hint1.SetActive(true);
+            Score = Score - 3;
+            Hint1used = true;
+            hintsUsed++;
+            HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        }
+
+        else if (questionNumber == 2 && Hint2used == false)
+        {
+            Hint2.SetActive(true);
+            Score = Score - 3;
+            Hint2used = true;
+            hintsUsed++;
+            HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        }
+
+        else if (questionNumber == 3 && Hint3used == false)
+        {
+            Hint3.SetActive(true);
+            Score = Score - 3;
+            Hint3used = true;
+            hintsUsed++;
+            HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        }
+
+        else if (questionNumber == 4 && Hint4used == false)
+        {
+            Hint4.SetActive(true);
+            Score = Score - 3;
+            Hint4used = true;
+            hintsUsed++;
+            HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        }
+
+        else if (questionNumber == 5 && Hint5used == false)
+        {
+            Hint5.SetActive(true);
+            Score = Score - 3;
+            Hint5used = true;
+            hintsUsed++;
+            HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        }
+    }
+
+    void CalculateResults()
+    {
+        Answer1.GetComponent<TMP_Text>().text = Q1Answer;
+        if (Q1Answer == "False") Answer1.GetComponent<TMP_Text>().color = Color.green;
+        else
+        {
+            Answer1.GetComponent<TMP_Text>().color = Color.red;
+            Score = Score - 20;
+        }
+
+        Answer2.GetComponent<TMP_Text>().text = Q2Answer;
+        if (Q2Answer == "B") Answer2.GetComponent<TMP_Text>().color = Color.green;
+        else
+        {
+            Answer2.GetComponent<TMP_Text>().color = Color.red;
+            Score = Score - 20;
+        }
+
+        Answer3.GetComponent<TMP_Text>().text = Q3Answer;
+        if (Q3Answer == "D") Answer3.GetComponent<TMP_Text>().color = Color.green;
+        else
+        {
+            Answer3.GetComponent<TMP_Text>().color = Color.red;
+            Score = Score - 20;
+        }
+        Answer4.GetComponent<TMP_Text>().text = Q4Answer;
+        if (Q4Answer == "C") Answer4.GetComponent<TMP_Text>().color = Color.green;
+        else
+        {
+            Answer4.GetComponent<TMP_Text>().color = Color.red;
+            Score = Score - 20;
+        }
+
+        Answer5.GetComponent<TMP_Text>().text = Q5Answer;
+        if (Q5Answer == "False") Answer5.GetComponent<TMP_Text>().color = Color.green;
+        else
+        {
+            Answer5.GetComponent<TMP_Text>().color = Color.red;
+            Score = Score - 20;
+        }
+
+        ScoreText.GetComponent<TMP_Text>().text = Score.ToString() + "%";
+        if (Score >= 70) ScoreText.GetComponent<TMP_Text>().color = Color.green;
+        else ScoreText.GetComponent<TMP_Text>().color = Color.red;
     }
 }
