@@ -11,7 +11,6 @@ public class WaterSpritz : MonoBehaviour, IHandGrabUseDelegate
     private float _lastUseTime;
     private AnimationCurve _strengthCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     [SerializeField] private float _triggerSpeed = 3f;
-    public GrabInteractable grabInteractable;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +19,6 @@ public class WaterSpritz : MonoBehaviour, IHandGrabUseDelegate
         if (waterSpritzEffect == null)
         {
             Debug.LogError("WaterSpritz: ParticleSystem not found in children.");
-        }
-        grabInteractable = GetComponent<GrabInteractable>();
-        if (grabInteractable == null)
-        {
-            Debug.LogError("WaterSpritz: GrabInteractable not found on this GameObject.");
         }
     }
     public void BeginUse()
