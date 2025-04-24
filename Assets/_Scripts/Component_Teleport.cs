@@ -8,6 +8,7 @@ public class Component_Teleport : MonoBehaviour
     public GameObject Isopropyl;
     public GameObject Methanol;
     public GameObject AirHose;
+    public GameObject GloveBox;
 
     private float Rot_Acetone_X;
     private float Rot_Acetone_Y;
@@ -36,6 +37,13 @@ public class Component_Teleport : MonoBehaviour
     private float Pos_Hose_X;
     private float Pos_Hose_Y;
     private float Pos_Hose_Z;
+
+    private float Rot_GloveBox_X;
+    private float Rot_GloveBox_Y;
+    private float Rot_GloveBox_Z;
+    private float Pos_GloveBox_X;
+    private float Pos_GloveBox_Y;
+    private float Pos_GloveBox_Z;
 
     private void Start()
     {
@@ -66,6 +74,13 @@ public class Component_Teleport : MonoBehaviour
         Rot_Hose_X = AirHose.transform.rotation.x;
         Rot_Hose_Y = AirHose.transform.rotation.y;
         Rot_Hose_Z = AirHose.transform.rotation.z;
+
+        Pos_GloveBox_X = GloveBox.transform.position.x;
+        Pos_GloveBox_Y = GloveBox.transform.position.y;
+        Pos_GloveBox_Z = GloveBox.transform.position.z;
+        Rot_GloveBox_X = GloveBox.transform.rotation.x;
+        Rot_GloveBox_Y = GloveBox.transform.rotation.y;
+        Rot_GloveBox_Z = GloveBox.transform.rotation.z;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -93,6 +108,12 @@ public class Component_Teleport : MonoBehaviour
             AirHose.transform.position = new Vector3(Pos_Hose_X, Pos_Hose_Y, Pos_Hose_Z);
             AirHose.transform.rotation = Quaternion.Euler(Rot_Hose_X, Rot_Hose_Y, Rot_Hose_Z);
             AirHose.transform.Rotate(0, -90, 0);
+
+            GloveBox.GetComponent<Rigidbody>().velocity = Vector3.zero; //Resets velocity
+            GloveBox.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; // Resets angular velocity
+            GloveBox.transform.position = new Vector3(Pos_GloveBox_X, Pos_GloveBox_Y, Pos_GloveBox_Z);
+            GloveBox.transform.rotation = Quaternion.Euler(Rot_GloveBox_X, Rot_GloveBox_Y, Rot_GloveBox_Z);
+            GloveBox.transform.Rotate(0, 90, 270);
         }
     }
 }
