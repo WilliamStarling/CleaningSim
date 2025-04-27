@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/_Scenes/SampleScene.unity
+    path: Assets/SolventStationAssets/_Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/_Scenes/SolventStation.unity
+    path: Assets/SolventStationAssets/_Scenes/SolventStation.unity
     guid: d71e425ca9f216c4985b60e188700716
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: af1bd3224e278e343b2e96165c754ac8,

@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.Video;
 
 public class MenuNav : MonoBehaviour
 {
@@ -17,6 +19,8 @@ public class MenuNav : MonoBehaviour
     public GameObject ScoreText;
     public GameObject HintsTracker;
     public int Score = 100;
+    public VideoPlayer videoPlayer;
+    public GameObject VideoDoneScreen;
 
     [Header("Audio")]
     public AudioSource audioSource;
@@ -76,6 +80,24 @@ public class MenuNav : MonoBehaviour
     private bool Hint3used = false;
     private bool Hint4used = false;
     private bool Hint5used = false;
+
+    
+    private void Start()
+    {
+        videoPlayer.loopPointReached += videoDone; //Add this so it gets called when the video is done, so we can move on.
+    }
+    void videoDone(VideoPlayer vp)
+    {
+        //vp.Stop(); //Stop the video player so it doesn't keep playing.
+        videoPlayer.gameObject.SetActive(false); //done with the video so turn it off.
+        VideoDoneScreen.SetActive(true); // show the video done screen to decide what to do next.
+        questionNumber = 0; //Lowers the question number so that it is 1 when the quiz starts.
+    }
+
+    public void setQuestionNumber(int number)
+    {
+        questionNumber = number;
+    }
 
     public void OpensScreen(GameObject next)
     {
