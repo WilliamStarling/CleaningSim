@@ -96,6 +96,7 @@ public class MenuNav : MonoBehaviour
             answerTag = self.tag;
             Q1Answer = answerTag;
             Hint1.SetActive(false);
+
         }
 
         else if (questionNumber == 2)
@@ -230,7 +231,7 @@ public class MenuNav : MonoBehaviour
 {
     // resets score and question numbers
     Score = 100;
-    questionNumber = 1;
+    questionNumber = 0;
     hintsUsed = 0;
 
     // resets answers
