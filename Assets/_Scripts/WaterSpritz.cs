@@ -26,7 +26,7 @@ public class WaterSpritz : MonoBehaviour, IHandGrabUseDelegate
         _dampedUseStrength = 0f;
         _lastUseTime = Time.realtimeSinceStartup;
         // Logic to start using the water spritz
-        Debug.Log("Water spritz started!");
+        //Debug.Log("Water spritz started!");
         waterSpritzEffect.Play();
     }
     public void EndUse()
