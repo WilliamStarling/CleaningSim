@@ -4760,6 +4760,8 @@ MonoBehaviour:
   ScoreText: {fileID: 0}
   HintsTracker: {fileID: 0}
   Score: 100
+  audioSource: {fileID: 0}
+  buttonClickSound: {fileID: 0}
   ButtonTrue1: {fileID: 0}
   ButtonFalse1: {fileID: 0}
   ButtonA2: {fileID: 0}
@@ -6377,7 +6379,7 @@ MonoBehaviour:
   AirHose: {fileID: 888915502}
   GloveBox: {fileID: 1505692624}
   Tweezers: {fileID: 104984394}
-  Wafer: {fileID: 1027511435}
+  Wafer: {fileID: 1556115554}
 --- !u!65 &460050643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7104,7 +7106,7 @@ MonoBehaviour:
   AirHose: {fileID: 888915502}
   GloveBox: {fileID: 1505692624}
   Tweezers: {fileID: 104984394}
-  Wafer: {fileID: 1027511435}
+  Wafer: {fileID: 1556115554}
 --- !u!65 &482218661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15851,12 +15853,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1024905468}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1027511435 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1346017446402011460, guid: 8a5fb593714f94045b625283c05a7924,
-    type: 3}
-  m_PrefabInstance: {fileID: 1698683892083147767}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1027511436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7685611449973171389, guid: 8a5fb593714f94045b625283c05a7924,
@@ -23942,7 +23938,7 @@ MonoBehaviour:
   AirHose: {fileID: 888915502}
   GloveBox: {fileID: 1505692624}
   Tweezers: {fileID: 104984394}
-  Wafer: {fileID: 1027511435}
+  Wafer: {fileID: 1556115554}
 --- !u!65 &1503050936
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25201,7 +25197,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554230935}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 1f9af4c7744ed4848a3750a24d0a14e5, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 627ff6acd800c364b8d25e28234fa0fd, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -25382,6 +25378,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1556115554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2810857806868969213, guid: 8a5fb593714f94045b625283c05a7924,
+    type: 3}
+  m_PrefabInstance: {fileID: 1698683892083147767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1560615247
 GameObject:
   m_ObjectHideFlags: 0
@@ -28071,7 +28073,7 @@ MonoBehaviour:
   AirHose: {fileID: 888915502}
   GloveBox: {fileID: 1505692624}
   Tweezers: {fileID: 104984394}
-  Wafer: {fileID: 1027511435}
+  Wafer: {fileID: 1556115554}
 --- !u!65 &1755228649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28604,7 +28606,7 @@ MonoBehaviour:
   AirHose: {fileID: 888915502}
   GloveBox: {fileID: 1505692624}
   Tweezers: {fileID: 104984394}
-  Wafer: {fileID: 1027511435}
+  Wafer: {fileID: 1556115554}
 --- !u!65 &1798160894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32713,7 +32715,7 @@ MonoBehaviour:
   AirHose: {fileID: 888915502}
   GloveBox: {fileID: 1505692624}
   Tweezers: {fileID: 104984394}
-  Wafer: {fileID: 1027511435}
+  Wafer: {fileID: 1556115554}
 --- !u!65 &2055330472
 BoxCollider:
   m_ObjectHideFlags: 0
