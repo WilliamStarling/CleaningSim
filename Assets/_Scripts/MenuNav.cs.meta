@@ -3,7 +3,40 @@ guid: 37506df8e2c86244aacc9f9f84284315
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ScoreText: {instanceID: 0}
+  - HintsTracker: {instanceID: 0}
+  - audioSource: {fileID: 4952431959122902166, guid: 671cb39b3964db34998d7d4017aecec9,
+      type: 3}
+  - buttonClickSound: {fileID: 8300000, guid: b6bc9e2db25ded1449f63311e6c49717, type: 3}
+  - ButtonTrue1: {instanceID: 0}
+  - ButtonFalse1: {instanceID: 0}
+  - ButtonA2: {instanceID: 0}
+  - ButtonB2: {instanceID: 0}
+  - ButtonC2: {instanceID: 0}
+  - ButtonD2: {instanceID: 0}
+  - ButtonA3: {instanceID: 0}
+  - ButtonB3: {instanceID: 0}
+  - ButtonC3: {instanceID: 0}
+  - ButtonD3: {instanceID: 0}
+  - ButtonE: {instanceID: 0}
+  - ButtonA4: {instanceID: 0}
+  - ButtonB4: {instanceID: 0}
+  - ButtonC4: {instanceID: 0}
+  - ButtonD4: {instanceID: 0}
+  - ButtonTrue5: {instanceID: 0}
+  - ButtonFalse5: {instanceID: 0}
+  - HintButton: {instanceID: 0}
+  - Hint1: {instanceID: 0}
+  - Hint2: {instanceID: 0}
+  - Hint3: {instanceID: 0}
+  - Hint4: {instanceID: 0}
+  - Hint5: {instanceID: 0}
+  - Answer1: {instanceID: 0}
+  - Answer2: {instanceID: 0}
+  - Answer3: {instanceID: 0}
+  - Answer4: {instanceID: 0}
+  - Answer5: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
