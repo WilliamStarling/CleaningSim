@@ -9,6 +9,8 @@ public class Component_Teleport : MonoBehaviour
     public GameObject Methanol;
     public GameObject AirHose;
     public GameObject GloveBox;
+    public GameObject Tweezers;
+    public GameObject Wafer;
 
     private float Rot_Acetone_X;
     private float Rot_Acetone_Y;
@@ -44,6 +46,20 @@ public class Component_Teleport : MonoBehaviour
     private float Pos_GloveBox_X;
     private float Pos_GloveBox_Y;
     private float Pos_GloveBox_Z;
+
+    private float Rot_Tweezers_X;
+    private float Rot_Tweezers_Y;
+    private float Rot_Tweezers_Z;
+    private float Pos_Tweezers_X;
+    private float Pos_Tweezers_Y;
+    private float Pos_Tweezers_Z;
+
+    private float Rot_Wafer_X;
+    private float Rot_Wafer_Y;
+    private float Rot_Wafer_Z;
+    private float Pos_Wafer_X;
+    private float Pos_Wafer_Y;
+    private float Pos_Wafer_Z;
 
     private void Start()
     {
@@ -81,6 +97,20 @@ public class Component_Teleport : MonoBehaviour
         Rot_GloveBox_X = GloveBox.transform.rotation.x;
         Rot_GloveBox_Y = GloveBox.transform.rotation.y;
         Rot_GloveBox_Z = GloveBox.transform.rotation.z;
+
+        Pos_Tweezers_X = Tweezers.transform.position.x;
+        Pos_Tweezers_Y = Tweezers.transform.position.y;
+        Pos_Tweezers_Z = Tweezers.transform.position.z;
+        Rot_Tweezers_X = Tweezers.transform.rotation.x;
+        Rot_Tweezers_Y = Tweezers.transform.rotation.y;
+        Rot_Tweezers_Z = Tweezers.transform.rotation.z;
+
+        Pos_Wafer_X = Wafer.transform.position.x;
+        Pos_Wafer_Y = Wafer.transform.position.y;
+        Pos_Wafer_Z = Wafer.transform.position.z;
+        Rot_Wafer_X = Wafer.transform.rotation.x;
+        Rot_Wafer_Y = Wafer.transform.rotation.y;
+        Rot_Wafer_Z = Wafer.transform.rotation.z;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -114,6 +144,16 @@ public class Component_Teleport : MonoBehaviour
             GloveBox.transform.position = new Vector3(Pos_GloveBox_X, Pos_GloveBox_Y, Pos_GloveBox_Z);
             GloveBox.transform.rotation = Quaternion.Euler(Rot_GloveBox_X, Rot_GloveBox_Y, Rot_GloveBox_Z);
             GloveBox.transform.Rotate(0, 90, 270);
+
+            Tweezers.GetComponent<Rigidbody>().velocity = Vector3.zero; //Resets velocity
+            Tweezers.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; // Resets angular velocity
+            Tweezers.transform.position = new Vector3(Pos_Tweezers_X, Pos_Tweezers_Y, Pos_Tweezers_Z);
+            Tweezers.transform.rotation = Quaternion.Euler(Rot_Tweezers_X, Rot_Tweezers_Y, Rot_Tweezers_Z);
+
+            Wafer.GetComponent<Rigidbody>().velocity = Vector3.zero; //Resets velocity
+            Wafer.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; // Resets angular velocity
+            Wafer.transform.position = new Vector3(Pos_Wafer_X, Pos_Wafer_Y, Pos_Wafer_Z);
+            Wafer.transform.rotation = Quaternion.Euler(Rot_Wafer_X, Rot_Wafer_Y, Rot_Wafer_Z);
         }
     }
 }
