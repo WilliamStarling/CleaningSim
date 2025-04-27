@@ -10,6 +10,7 @@ public class Component_Teleport : MonoBehaviour
     public GameObject AirHose;
     public GameObject GloveBox;
     public GameObject Tweezers;
+    public GameObject Wafer;
 
     private float Rot_Acetone_X;
     private float Rot_Acetone_Y;
@@ -52,6 +53,13 @@ public class Component_Teleport : MonoBehaviour
     private float Pos_Tweezers_X;
     private float Pos_Tweezers_Y;
     private float Pos_Tweezers_Z;
+
+    private float Rot_Wafer_X;
+    private float Rot_Wafer_Y;
+    private float Rot_Wafer_Z;
+    private float Pos_Wafer_X;
+    private float Pos_Wafer_Y;
+    private float Pos_Wafer_Z;
 
     private void Start()
     {
@@ -96,6 +104,13 @@ public class Component_Teleport : MonoBehaviour
         Rot_Tweezers_X = Tweezers.transform.rotation.x;
         Rot_Tweezers_Y = Tweezers.transform.rotation.y;
         Rot_Tweezers_Z = Tweezers.transform.rotation.z;
+
+        Pos_Wafer_X = Wafer.transform.position.x;
+        Pos_Wafer_Y = Wafer.transform.position.y;
+        Pos_Wafer_Z = Wafer.transform.position.z;
+        Rot_Wafer_X = Wafer.transform.rotation.x;
+        Rot_Wafer_Y = Wafer.transform.rotation.y;
+        Rot_Wafer_Z = Wafer.transform.rotation.z;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -134,6 +149,11 @@ public class Component_Teleport : MonoBehaviour
             Tweezers.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; // Resets angular velocity
             Tweezers.transform.position = new Vector3(Pos_Tweezers_X, Pos_Tweezers_Y, Pos_Tweezers_Z);
             Tweezers.transform.rotation = Quaternion.Euler(Rot_Tweezers_X, Rot_Tweezers_Y, Rot_Tweezers_Z);
+
+            Wafer.GetComponent<Rigidbody>().velocity = Vector3.zero; //Resets velocity
+            Wafer.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; // Resets angular velocity
+            Wafer.transform.position = new Vector3(Pos_Wafer_X, Pos_Wafer_Y, Pos_Wafer_Z);
+            Wafer.transform.rotation = Quaternion.Euler(Rot_Wafer_X, Rot_Wafer_Y, Rot_Wafer_Z);
         }
     }
 }
