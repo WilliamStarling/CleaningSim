@@ -18,6 +18,11 @@ public class MenuNav : MonoBehaviour
     public GameObject HintsTracker;
     public int Score = 100;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip buttonClickSound;
+
+
     [Header("Question 1")]
     public GameObject ButtonTrue1;
     public GameObject ButtonFalse1;
@@ -214,8 +219,71 @@ public class MenuNav : MonoBehaviour
             Score = Score - 20;
         }
 
+        Score = Mathf.Max(0, Score); // added to hopefully fix the negative score issue
+
         ScoreText.GetComponent<TMP_Text>().text = Score.ToString() + "%";
         if (Score >= 70) ScoreText.GetComponent<TMP_Text>().color = Color.green;
         else ScoreText.GetComponent<TMP_Text>().color = Color.red;
     }
+
+    public void RetakeQuiz()
+{
+    // resets score and question numbers
+    Score = 100;
+    questionNumber = 1;
+    hintsUsed = 0;
+
+    // resets answers
+    Q1Answer = "";
+    Q2Answer = "";
+    Q3Answer = "";
+    Q4Answer = "";
+    Q5Answer = "";
+
+    // resets hints used
+    Hint1used = false;
+    Hint2used = false;
+    Hint3used = false;
+    Hint4used = false;
+    Hint5used = false;
+
+    // hides hints
+    Hint1.SetActive(false);
+    Hint2.SetActive(false);
+    Hint3.SetActive(false);
+    Hint4.SetActive(false);
+    Hint5.SetActive(false);
+
+    // resets UI / colors
+    Answer1.GetComponent<TMP_Text>().text = "";
+    Answer1.GetComponent<TMP_Text>().color = Color.white;
+    Answer2.GetComponent<TMP_Text>().text = "";
+    Answer2.GetComponent<TMP_Text>().color = Color.white;
+    Answer3.GetComponent<TMP_Text>().text = "";
+    Answer3.GetComponent<TMP_Text>().color = Color.white;
+    Answer4.GetComponent<TMP_Text>().text = "";
+    Answer4.GetComponent<TMP_Text>().color = Color.white;
+    Answer5.GetComponent<TMP_Text>().text = "";
+    Answer5.GetComponent<TMP_Text>().color = Color.white;
+
+    // reset score and hin tracker
+    ScoreText.GetComponent<TMP_Text>().text = Score.ToString() + "%";
+    ScoreText.GetComponent<TMP_Text>().color = Color.white;
+    HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+}
+
+public void QuitSimulation()
+{
+    // quits the application
+    Application.Quit();
+}
+
+public void PlayButtonSound() // added for button clicking sound!
+{
+    if (audioSource != null && buttonClickSound != null)
+    {
+        audioSource.PlayOneShot(buttonClickSound);
+    }
+}
+
 }
