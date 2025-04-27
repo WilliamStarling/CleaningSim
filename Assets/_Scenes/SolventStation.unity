@@ -755,6 +755,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2299356774750666835, guid: cba0f9a144d66a549971379cd659cee3,
         type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299356774750666835, guid: cba0f9a144d66a549971379cd659cee3,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -55
       objectReference: {fileID: 0}
@@ -811,7 +816,7 @@ PrefabInstance:
     - target: {fileID: 4223734354129850564, guid: cba0f9a144d66a549971379cd659cee3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4419981906948157410, guid: cba0f9a144d66a549971379cd659cee3,
         type: 3}
@@ -4573,7 +4578,7 @@ PrefabInstance:
     - target: {fileID: 4223734354129850564, guid: cba0f9a144d66a549971379cd659cee3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4419981906948157410, guid: cba0f9a144d66a549971379cd659cee3,
         type: 3}
@@ -5650,7 +5655,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1260615599}
-  m_Father: {fileID: 1892598743}
+  m_Father: {fileID: 1024905469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &431122031
 GameObject:
@@ -6096,7 +6101,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 475, y: 150, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
@@ -14979,6 +14984,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 420246523}
+    - targetCorrespondingSourceObject: {fileID: 761263427186263199, guid: cba0f9a144d66a549971379cd659cee3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1410172752}
+    - targetCorrespondingSourceObject: {fileID: 761263427186263199, guid: cba0f9a144d66a549971379cd659cee3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 424197770}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cba0f9a144d66a549971379cd659cee3, type: 3}
 --- !u!224 &1024905469 stripped
@@ -21295,6 +21308,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1892598744}
+        m_TargetAssemblyTypeName: MenuNav, Assembly-CSharp
+        m_MethodName: CloseScreen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1024905470}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1892598744}
+        m_TargetAssemblyTypeName: MenuNav, Assembly-CSharp
+        m_MethodName: OpensScreen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 42531068}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1399863597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21857,7 +21894,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1399863595}
-  m_Father: {fileID: 1892598743}
+  m_Father: {fileID: 1024905469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1423630024
 GameObject:
@@ -26255,7 +26292,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708919227}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 1f9af4c7744ed4848a3750a24d0a14e5, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 627ff6acd800c364b8d25e28234fa0fd, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -26277,9 +26314,9 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
-  m_Looping: 1
+  m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
@@ -28994,8 +29031,6 @@ RectTransform:
   - {fileID: 1166109285}
   - {fileID: 1024905469}
   - {fileID: 1708919228}
-  - {fileID: 424197770}
-  - {fileID: 1410172752}
   - {fileID: 2017904128767770540}
   m_Father: {fileID: 1276688351}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
