@@ -1,41 +1,45 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Oculus.Interaction.Editor;
 using Oculus.Interaction.HandGrab;
 using Oculus.Interaction.Throw;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Tweeze : MonoBehaviour, IHandGrabUseDelegate
+//Old backup of the tweezer script that was trying to use force joints.
+public class TweezeJoint : MonoBehaviour, IHandGrabUseDelegate
 {
     private float _dampedUseStrength = 0;
     private float _lastUseTime;
     private AnimationCurve _strengthCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     [SerializeField] private float _triggerSpeed = 3f;
-    [SerializeField] private bool canGrab = false;
-    [SerializeField] private bool inRange = false;
+    private bool canGrab = false;
+    private bool inRange = false;
     private GameObject grabbableObject = null;
     private Rigidbody grabbableRB = null;
-    [SerializeField] private Transform defaultParent;
+    [SerializeField] private GameObject defaultParent = null;
+    [SerializeField] private FixedJoint fixedJoint;
     // Start is called before the first frame update
+    void Start()
+    {
+        fixedJoint = this.GetComponent<FixedJoint>(); //The fixed joint that will be used to grab the object.
+    }
 
     void GrabObject()
     {
-        //Debug.Log("Tweezers Grabbing object: " + grabbableObject.name);
-        grabbableRB.useGravity = false; //Disable gravity on the object so it doesn't fall when grabbed.
-        grabbableRB.isKinematic = true; //Set the object to be kinematic so it doesn't move when grabbed.
-        grabbableRB.velocity = Vector3.zero; //reset the velocity so it is frozen
-        grabbableRB.angularVelocity = Vector3.zero; //reset the angular velocity so it is frozen
-        grabbableObject.transform.SetParent(this.transform); //Set the parent of the object to be the tweezer.
+        Debug.Log("Tweezers Grabbing object: " + grabbableObject.name);
+        grabbableRB.useGravity = true; //Disable gravity on the object so it doesn't fall when grabbed.
+        fixedJoint.connectedBody = grabbableRB; //Set the fixed joint to be connected to the object that is in range.
     }
 
     void ReleaseObject()
     {
-        //Debug.Log("Tweezers Dropping object: " + grabbableObject.name);
-        grabbableObject.transform.SetParent(defaultParent); //Set the fixed joint to be disconnected from the object that was in range.
+        Debug.Log("Tweezers Dropping object: " + grabbableObject.name);
+        fixedJoint.connectedBody = null; //Set the fixed joint to be disconnected from the object that was in range.
         grabbableRB.useGravity = true; //Enable gravity on the object so it falls when dropped.
-        grabbableRB.isKinematic = false; //Set the object to be non-kinematic so it can move when dropped.
+        Rigidbody tweezerRB = this.GetComponent<Rigidbody>(); //Get the rigidbody of the tweezer.
+        tweezerRB.velocity = Vector3.zero;
+        tweezerRB.angularVelocity = Vector3.zero;
     }
 
     void OnTriggerEnter(Collider other)
@@ -43,9 +47,9 @@ public class Tweeze : MonoBehaviour, IHandGrabUseDelegate
         // Logic to handle when the Tweezer touches something it can grab.
         if(other.CompareTag("Component"))
         {
-            grabbableObject = other.transform.parent.gameObject; //Get the Game object of the parent of the collider that is in range.
-            grabbableRB = other.gameObject.GetComponent<Rigidbody>(); //Get the rigidbody of the object that is in range.
-            //Debug.Log("Grabbable entered Tweezer range: " + grabbableObject.name);
+            Debug.Log("Grabbable entered Tweezer range: " + other.gameObject.name);
+            grabbableObject = other.gameObject; //Get the object that is in range.
+            grabbableRB = grabbableObject.GetComponent<Rigidbody>(); //Get the rigidbody of the object that is in range.
             inRange = true; //boolean to for checking when grip is pressed.
             if(canGrab)
             {
@@ -61,21 +65,14 @@ public class Tweeze : MonoBehaviour, IHandGrabUseDelegate
         // Logic to handle when the Tweezer leaves the object it can grab.
         if(other.CompareTag("Component"))
         {
-            //Debug.Log("Grabbable left tweezer range: " + grabbableObject.name);
+            Debug.Log("Grabbable left tweezer range: " + other.gameObject.name);
             inRange = false; //update boolean so grabbing can't grab it now.
-            ReleaseObject();
+            if(canGrab)
+            {
+                ReleaseObject();
+            }
             grabbableObject = null; //release the reference to object that was in range.
-            //grabbableRB = null; //release the reference to the rigidbody of the object that was in range.
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if(grabbableRB.isKinematic == true && !(canGrab && inRange))
-        {
-            grabbableRB.isKinematic = false; //Set the object to be non-kinematic so it can move when dropped.
-            //If the object is kinematic and the tweezer is not in range, release the object
-            //(There's a bug where the object floats if it's "pulled out" of the tweezers, so have to do this manually)
+            grabbableRB = null; //release the reference to the rigidbody of the object that was in range.
         }
     }
 
@@ -84,7 +81,7 @@ public class Tweeze : MonoBehaviour, IHandGrabUseDelegate
         _dampedUseStrength = 0f;
         _lastUseTime = Time.realtimeSinceStartup;
         // Logic to start using the tweezer
-        //Debug.Log("Tweezers being used!");
+        Debug.Log("Tweezers being used!");
         canGrab = true;
         if(inRange)
         {
@@ -95,9 +92,12 @@ public class Tweeze : MonoBehaviour, IHandGrabUseDelegate
     public void EndUse()
     {
         // Logic to end using the tweezer
-        //Debug.Log("Tweezers stopped being used!");
+        Debug.Log("Tweezers stopped being used!");
         canGrab = false;
-        ReleaseObject();
+        if(inRange)
+        {
+            ReleaseObject();
+        }
     }
 
     public float ComputeUseStrength(float strength)
