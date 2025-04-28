@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Oculus.Interaction.Editor;
+//using Oculus.Interaction.Editor;
 using Oculus.Interaction.HandGrab;
 using Oculus.Interaction.Throw;
 using Unity.VisualScripting;
@@ -41,7 +41,7 @@ public class Tweeze : MonoBehaviour, IHandGrabUseDelegate
     void OnTriggerEnter(Collider other)
     {
         // Logic to handle when the Tweezer touches something it can grab.
-        if(other.CompareTag("Component"))
+        if(other.CompareTag("Component") && grabbableObject == null)
         {
             grabbableObject = other.transform.parent.gameObject; //Get the Game object of the parent of the collider that is in range.
             grabbableRB = other.gameObject.GetComponent<Rigidbody>(); //Get the rigidbody of the object that is in range.
