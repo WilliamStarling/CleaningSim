@@ -13,11 +13,14 @@ TagManager:
   - D
   - E
   - Hint
+  - Label
+  - Floor
+  - Station
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Floor
   - Water
   - UI
   - 

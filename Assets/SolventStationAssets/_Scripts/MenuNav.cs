@@ -1,3 +1,4 @@
+using Meta.XR.ImmersiveDebugger.UserInterface.Generic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,14 +19,17 @@ public class MenuNav : MonoBehaviour
     public string answerTag;
     public GameObject ScoreText;
     public GameObject HintsTracker;
+    public GameObject ResultScreenHints;
     public int Score = 100;
     public VideoPlayer videoPlayer;
     public GameObject VideoDoneScreen;
 
-    [Header("Audio")]
-    public AudioSource audioSource;
-    public AudioClip buttonClickSound;
-
+    [Header("Answer Key")]
+    public String Q1CorrectAnswer;
+    public String Q2CorrectAnswer;
+    public String Q3CorrectAnswer;
+    public String Q4CorrectAnswer;
+    public String Q5CorrectAnswer;
 
     [Header("Question 1")]
     public GameObject ButtonTrue1;
@@ -55,7 +59,6 @@ public class MenuNav : MonoBehaviour
     public GameObject ButtonFalse5;
 
     [Header("Hints")]
-    public GameObject HintButton;
     public GameObject Hint1;
     public GameObject Hint2;
     public GameObject Hint3;
@@ -162,6 +165,7 @@ public class MenuNav : MonoBehaviour
             Hint1used = true;
             hintsUsed++;
             HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+            ResultScreenHints.GetComponent<TMP_Text>().text = hintsUsed.ToString();
         }
 
         else if (questionNumber == 2 && Hint2used == false)
@@ -171,6 +175,7 @@ public class MenuNav : MonoBehaviour
             Hint2used = true;
             hintsUsed++;
             HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+            ResultScreenHints.GetComponent<TMP_Text>().text = hintsUsed.ToString();
         }
 
         else if (questionNumber == 3 && Hint3used == false)
@@ -180,6 +185,7 @@ public class MenuNav : MonoBehaviour
             Hint3used = true;
             hintsUsed++;
             HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+            ResultScreenHints.GetComponent<TMP_Text>().text = hintsUsed.ToString();
         }
 
         else if (questionNumber == 4 && Hint4used == false)
@@ -189,6 +195,7 @@ public class MenuNav : MonoBehaviour
             Hint4used = true;
             hintsUsed++;
             HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+            ResultScreenHints.GetComponent<TMP_Text>().text = hintsUsed.ToString();
         }
 
         else if (questionNumber == 5 && Hint5used == false)
@@ -198,13 +205,22 @@ public class MenuNav : MonoBehaviour
             Hint5used = true;
             hintsUsed++;
             HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+            ResultScreenHints.GetComponent<TMP_Text>().text = hintsUsed.ToString();
         }
+    }
+
+    public void LabelsToggleOn()
+    {
+        Score = Score - 3;
+        hintsUsed++;
+        HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        ResultScreenHints.GetComponent<TMP_Text>().text = hintsUsed.ToString();
     }
 
     void CalculateResults()
     {
         Answer1.GetComponent<TMP_Text>().text = Q1Answer;
-        if (Q1Answer == "False") Answer1.GetComponent<TMP_Text>().color = Color.green;
+        if (Q1Answer == Q1CorrectAnswer) Answer1.GetComponent<TMP_Text>().color = Color.green;
         else
         {
             Answer1.GetComponent<TMP_Text>().color = Color.red;
@@ -212,7 +228,7 @@ public class MenuNav : MonoBehaviour
         }
 
         Answer2.GetComponent<TMP_Text>().text = Q2Answer;
-        if (Q2Answer == "B") Answer2.GetComponent<TMP_Text>().color = Color.green;
+        if (Q2Answer == Q2CorrectAnswer) Answer2.GetComponent<TMP_Text>().color = Color.green;
         else
         {
             Answer2.GetComponent<TMP_Text>().color = Color.red;
@@ -220,14 +236,14 @@ public class MenuNav : MonoBehaviour
         }
 
         Answer3.GetComponent<TMP_Text>().text = Q3Answer;
-        if (Q3Answer == "D") Answer3.GetComponent<TMP_Text>().color = Color.green;
+        if (Q3Answer == Q3CorrectAnswer) Answer3.GetComponent<TMP_Text>().color = Color.green;
         else
         {
             Answer3.GetComponent<TMP_Text>().color = Color.red;
             Score = Score - 20;
         }
         Answer4.GetComponent<TMP_Text>().text = Q4Answer;
-        if (Q4Answer == "C") Answer4.GetComponent<TMP_Text>().color = Color.green;
+        if (Q4Answer == Q4CorrectAnswer) Answer4.GetComponent<TMP_Text>().color = Color.green;
         else
         {
             Answer4.GetComponent<TMP_Text>().color = Color.red;
@@ -235,7 +251,7 @@ public class MenuNav : MonoBehaviour
         }
 
         Answer5.GetComponent<TMP_Text>().text = Q5Answer;
-        if (Q5Answer == "False") Answer5.GetComponent<TMP_Text>().color = Color.green;
+        if (Q5Answer == Q5CorrectAnswer) Answer5.GetComponent<TMP_Text>().color = Color.green;
         else
         {
             Answer5.GetComponent<TMP_Text>().color = Color.red;
@@ -250,63 +266,55 @@ public class MenuNav : MonoBehaviour
     }
 
     public void RetakeQuiz()
-{
-    // resets score and question numbers
-    Score = 100;
-    questionNumber = 0;
-    hintsUsed = 0;
-
-    // resets answers
-    Q1Answer = "";
-    Q2Answer = "";
-    Q3Answer = "";
-    Q4Answer = "";
-    Q5Answer = "";
-
-    // resets hints used
-    Hint1used = false;
-    Hint2used = false;
-    Hint3used = false;
-    Hint4used = false;
-    Hint5used = false;
-
-    // hides hints
-    Hint1.SetActive(false);
-    Hint2.SetActive(false);
-    Hint3.SetActive(false);
-    Hint4.SetActive(false);
-    Hint5.SetActive(false);
-
-    // resets UI / colors
-    Answer1.GetComponent<TMP_Text>().text = "";
-    Answer1.GetComponent<TMP_Text>().color = Color.white;
-    Answer2.GetComponent<TMP_Text>().text = "";
-    Answer2.GetComponent<TMP_Text>().color = Color.white;
-    Answer3.GetComponent<TMP_Text>().text = "";
-    Answer3.GetComponent<TMP_Text>().color = Color.white;
-    Answer4.GetComponent<TMP_Text>().text = "";
-    Answer4.GetComponent<TMP_Text>().color = Color.white;
-    Answer5.GetComponent<TMP_Text>().text = "";
-    Answer5.GetComponent<TMP_Text>().color = Color.white;
-
-    // reset score and hin tracker
-    ScoreText.GetComponent<TMP_Text>().text = Score.ToString() + "%";
-    ScoreText.GetComponent<TMP_Text>().color = Color.white;
-    HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
-}
-
-public void QuitSimulation()
-{
-    // quits the application
-    Application.Quit();
-}
-
-public void PlayButtonSound() // added for button clicking sound!
-{
-    if (audioSource != null && buttonClickSound != null)
     {
-        audioSource.PlayOneShot(buttonClickSound);
-    }
-}
+        // resets score and question numbers
+        Score = 100;
+        questionNumber = 0;
+        hintsUsed = 0;
 
+        // resets answers
+        Q1Answer = "";
+        Q2Answer = "";
+        Q3Answer = "";
+        Q4Answer = "";
+        Q5Answer = "";
+
+        // resets hints used
+        Hint1used = false;
+        Hint2used = false;
+        Hint3used = false;
+        Hint4used = false;
+        Hint5used = false;
+
+        // hides hints
+        Hint1.SetActive(false);
+        Hint2.SetActive(false);
+        Hint3.SetActive(false);
+        Hint4.SetActive(false);
+        Hint5.SetActive(false);
+
+        // resets UI / colors
+        Answer1.GetComponent<TMP_Text>().text = "";
+        Answer1.GetComponent<TMP_Text>().color = Color.white;
+        Answer2.GetComponent<TMP_Text>().text = "";
+        Answer2.GetComponent<TMP_Text>().color = Color.white;
+        Answer3.GetComponent<TMP_Text>().text = "";
+        Answer3.GetComponent<TMP_Text>().color = Color.white;
+        Answer4.GetComponent<TMP_Text>().text = "";
+        Answer4.GetComponent<TMP_Text>().color = Color.white;
+        Answer5.GetComponent<TMP_Text>().text = "";
+        Answer5.GetComponent<TMP_Text>().color = Color.white;
+
+        // reset score and hin tracker
+        ScoreText.GetComponent<TMP_Text>().text = Score.ToString() + "%";
+        ScoreText.GetComponent<TMP_Text>().color = Color.white;
+        HintsTracker.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+        ResultScreenHints.GetComponent<TMP_Text>().text = hintsUsed.ToString();
+    }
+
+    public void QuitSimulation()
+    {
+        // quits the application
+        Application.Quit();
+    }
 }
